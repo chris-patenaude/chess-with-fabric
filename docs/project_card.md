@@ -56,7 +56,7 @@ The application must allow players to resign, automatically forfeiting the game.
 #### Attributes
 - perspective: light | dark
 - capturedPieces: Piece[]
-- pgn: string
+- moves: Stack<Move>
 - gameState: Map<Square, Piece | null>
 
 ### Square
