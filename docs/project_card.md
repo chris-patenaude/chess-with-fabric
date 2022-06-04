@@ -54,10 +54,19 @@ The application must allow players to resign, automatically forfeiting the game.
 ## Data Entities
 ### Board
 #### Attributes
+- gameStatus: START | ONGOING | WON | LOST | DRAW
 - perspective: light | dark
 - capturedPieces: Piece[]
 - moves: Stack<Move>
 - gameState: Map<Square, Piece | null>
+
+#### Methods
+- setPiece(Piece, Square):void
+- toString():string
+- movePiece(Piece, Square):void
+- capturePiece(Piece):void
+- getGameStatus(): START | ONGOING | WON | LOST | DRAW
+- getAvailableSquares(Piece): Squares[]
 
 ### Square
 #### Attributes
@@ -66,11 +75,9 @@ The application must allow players to resign, automatically forfeiting the game.
 - isDark: boolean
 
 ### Move
-// TODO: Think about how to track and manage piece movement. Undo, set up positions, ect. 
 #### Attributes
 - piece: Piece
 - destination: Square
-
 ### Piece
 #### Attributes
 - id: string 
@@ -78,24 +85,8 @@ The application must allow players to resign, automatically forfeiting the game.
 - isDark: boolean
 - type: string
 
-## Data Module Interface
-### Board
-- create({options}):Board
-- create(png:string):Board
-- set(Board, {options}):Board
-- serialize(Board):string
-- movePiece(Board, Move):Board
-- capturePiece(Board, piece):Board
-- getGameStatus(Board): START | ONGOING | WON | LOST | DRAW
-- getAvailableSquares(Board, Piece): Squares[]
-
-### Square
-- create({options}):Square
-- set(Square, {options}):Square
-
-### Piece
-- create({options}):Piece
-- set(Piece, {options}):Piece
+#### Methods
+- promote(type:string):void
 
 ## Frontend 
 - Web Framework: React
