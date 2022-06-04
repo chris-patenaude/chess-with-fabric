@@ -52,20 +52,28 @@ The application must allow players to offer a draw, allowing their opponent the 
 The application must allow players to resign, automatically forfeiting the game.
 
 ## Data Entities
-### Board
+### Game
 #### Attributes
-- gameStatus: START | ONGOING | WON | LOST | DRAW
-- perspective: light | dark
+- State: START | ONGOING | WON | LOST | DRAW
+- playerColor: light | dark
 - capturedPieces: Piece[]
 - moves: Stack<Move>
-- gameState: Map<Square, Piece | null>
+- board: Board
+
+#### Methods
+- capturePiece(Piece):void
+- makeMove(Piece, Square):void
+- getGameStatus(): START | ONGOING | WON | LOST | DRAW
+
+### Board
+#### Attributes
+- inverted:boolean
+- boardState: <Square, Piece | null>
 
 #### Methods
 - setPiece(Piece, Square):void
-- toString():string
 - movePiece(Piece, Square):void
-- capturePiece(Piece):void
-- getGameStatus(): START | ONGOING | WON | LOST | DRAW
+- removePiece(Piece):void
 - getAvailableSquares(Piece): Squares[]
 
 ### Square
