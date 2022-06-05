@@ -57,26 +57,24 @@ The application must allow players to resign, automatically forfeiting the game.
 - State: START | ONGOING | WON | LOST | DRAW
 - playerColor: light | dark
 - capturedPieces: Piece[]
-- moves: Stack<Move>
-- board: Board
+- moves: Move[]
+- gameBoard: <Square, Piece | null>
 
 #### Methods
 - capturePiece(Piece):void
 - makeMove(Piece, Square):void
 - getGameStatus(): START | ONGOING | WON | LOST | DRAW
+- getAvailableMoves(Piece): Moves[]
 
 ### Board
+Extends fabric.Group
 #### Attributes
 - inverted:boolean
-- boardState: <Square, Piece | null>
 
-#### Methods
-- setPiece(Piece, Square):void
-- movePiece(Piece, Square):void
-- removePiece(Piece):void
-- getAvailableSquares(Piece): Squares[]
-
+#### Method
+- generateBoardSquares():Square[]
 ### Square
+Extends fabric.Rect
 #### Attributes
 - canvasPosition: {top:number, left: number}
 - gameCoordinates: string
@@ -87,6 +85,7 @@ The application must allow players to resign, automatically forfeiting the game.
 - piece: Piece
 - destination: Square
 ### Piece
+Extends fabric.SVG?
 #### Attributes
 - id: string 
 - captured: boolean
