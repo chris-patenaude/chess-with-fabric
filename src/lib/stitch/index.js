@@ -3,7 +3,7 @@ const stitch = Object.freeze({
     canvas(elem, opt = undefined) {
         return new fabric.Canvas(elem, opt);
     },
-    async svg(url, opt) {
+    async svg(url, opt = {}) {
         const { squareSize = 50 } = opt;
         return new Promise((res) => {
             fabric.loadSVGFromURL(url, (objs, options) => {
