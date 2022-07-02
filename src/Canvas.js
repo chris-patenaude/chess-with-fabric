@@ -1,28 +1,50 @@
+// Inspiration from https://github.com/asotog/fabricjs-react/blob/master/src/index.tsx
 import { fabric } from "fabric";
-import { useContext } from "react";
-import { useLayoutEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import GameCTX from "./GameCTX";
 
-const CANVAS_ID = "game-canvas";
-
-const Canvas = ({ children }) => {
+// uncontrolled component implementation
+const Canvas = (props) => {
+  // set default props
   const { setCanvas } = useContext(GameCTX);
-
-  // Initialize fabric canvas object and add to the App
-  // context and state.
-  useLayoutEffect(() => {
-    const fabricCanvas = new fabric.Canvas(CANVAS_ID, {
-      height: 800,
-      width: 800,
-      selection: false,
+  const { children, className, style } = props;
+  const canvasElement = useRef(null);
+  const wrapperElement = useRef(null);
+  useEffect(() => {
+    if (!setCanvas) return;
+    const canvas = new fabric.Canvas(canvasElement.current, {
       backgroundColor: "grey",
+      selection: false,
+      renderOnAddRemove: true,
     });
 
-    // Render Objects
-    fabricCanvas.requestRenderAll();
-    setCanvas(fabricCanvas);
+    /**
+     * sets dimensions based on wrapper elements height and width
+     */
+    const setCanvasDimensions = () => {
+      canvas.setHeight(wrapperElement.current?.clientHeight || 0);
+      canvas.setWidth(wrapperElement.current?.clientWidth || 0);
+      canvas.renderAll();
+    };
+
+    setCanvasDimensions();
+    // TODO: Not sure what the third arg is doing here
+    window.addEventListener("resize", setCanvasDimensions, false);
+    setCanvas(canvas);
+
+    // cleanup event listeners and canvas object on dismount
+    return () => {
+      canvas.dispose();
+      window.removeEventListener("resize", setCanvasDimensions);
+    };
   }, [setCanvas]);
 
-  return <canvas id={CANVAS_ID}>{children}</canvas>;
+  return (
+    <div ref={wrapperElement} className={className} style={style}>
+      <canvas ref={canvasElement} />
+      {children}
+    </div>
+  );
 };
+
 export default Canvas;

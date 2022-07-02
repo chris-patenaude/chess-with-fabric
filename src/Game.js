@@ -2,7 +2,6 @@ import { useState } from "react";
 import Canvas from "./Canvas";
 import GameCTX, { GameState } from "./GameCTX";
 import Board from "./Board";
-import Events from "./Events";
 
 const App = () => {
   const [canvas, setCanvas] = useState(undefined);
@@ -20,9 +19,8 @@ const App = () => {
         setCanvas,
       }}
     >
-      <Canvas>
+      <Canvas style={{ height: 800, width: 800 }}>
         <Board />
-        <Events />
       </Canvas>
     </GameCTX.Provider>
   );
