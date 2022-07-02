@@ -6,7 +6,7 @@ import stitch from "./lib/stitch";
 // uncontrolled component implementation
 const Canvas = (props) => {
     // set default props
-    const { setCanvas } = useContext(GameCTX);
+    const { setCanvas, SQUARE_SIZE } = useContext(GameCTX);
     const { children, className, style } = props;
     const canvasElement = useRef(null);
     const wrapperElement = useRef(null);
@@ -30,6 +30,12 @@ const Canvas = (props) => {
         setCanvasDimensions();
         // TODO: Not sure what the third arg is doing here
         window.addEventListener("resize", setCanvasDimensions, false);
+        canvas.on("mouse:up", (opt) => {
+            options.target.set({
+                left: Math.round(opt.target.left / SQUARE_SIZE) * SQUARE_SIZE,
+                top: Math.round(opt.target.top / SQUARE_SIZE) * SQUARE_SIZE,
+            });
+        });
         setCanvas(canvas);
 
         // cleanup event listeners and canvas object on dismount
