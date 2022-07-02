@@ -15,8 +15,11 @@ const stitch = Object.freeze({
                 const scaleRatio = squareSize / longestSide;
                 loadedObjects.scale(scaleRatio);
                 loadedObjects.set({
-                    height: longestSide,
-                    width: longestSide,
+                    // Note: an invisible 1px stroke is added on to the width
+                    // of all elements, so I subtract it to keep my boarder
+                    // flush with any element the svg is on top of.
+                    height: longestSide - loadedObjects.strokeWidth,
+                    width: longestSide - loadedObjects.strokeWidth,
                     ...opt,
                 });
                 res(loadedObjects);

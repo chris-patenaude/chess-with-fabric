@@ -30,6 +30,7 @@ const Board = () => {
                 return {
                     ...acc,
                     [key]: new fabric.Rect({
+                        strokeWidth: 0,
                         width: SQUARE_SIZE,
                         height: SQUARE_SIZE,
                         left: colIndex * SQUARE_SIZE,

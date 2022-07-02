@@ -37,6 +37,7 @@ const Piece = ({ type, shade, size, left, top }) => {
         if (preventCreate) return;
         stitch
             .svg(pieceTypes[`${shade}_${type}`], {
+                hasControls: false,
                 squareSize: size,
                 left: left || 0,
                 top: top || 0,
