@@ -8,11 +8,15 @@ const COLUMNS = 8;
 const ROWS = 8;
 const SQUARE_SIZE = 80;
 
+// TODO: refactor to use stitch library
 const Board = () => {
     const { canvas } = useContext(GameCTX);
     const [board] = useState(() => {
         return new Array(ROWS).fill(null).map((_row, rowIndex) => {
-            return new Array(COLUMNS).fill("").map((_column, colIndex) => {
+            const colKeys = Array.from({ length: COLUMNS }, (_, index) => {
+                return String.fromCharCode(index + 97);
+            });
+            return colKeys.reduce((acc, key, colIndex) => {
                 const getColor = () => {
                     const rowIsEven = rowIndex % 2 === 0;
                     const columnIsEven = colIndex % 2 === 0;
@@ -24,22 +28,25 @@ const Board = () => {
                     }
                 };
 
-                return new fabric.Rect({
-                    width: SQUARE_SIZE,
-                    height: SQUARE_SIZE,
-                    left: colIndex * SQUARE_SIZE,
-                    top: rowIndex * SQUARE_SIZE,
-                    fill: getColor(),
-                    selectable: false,
-                });
-            });
+                return {
+                    ...acc,
+                    [key]: new fabric.Rect({
+                        width: SQUARE_SIZE,
+                        height: SQUARE_SIZE,
+                        left: colIndex * SQUARE_SIZE,
+                        top: rowIndex * SQUARE_SIZE,
+                        fill: getColor(),
+                        selectable: false,
+                    }),
+                };
+            }, {});
         });
     });
 
     useEffect(() => {
         if (!canvas || !board.length) return;
         // flatten multidimensional array and spread into canvas
-        canvas.add(...board.flat());
+        canvas.add(...board.map((row) => Object.values(row)).flat());
     }, [canvas, board]);
 };
 export default Board;
