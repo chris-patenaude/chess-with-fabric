@@ -6,11 +6,10 @@ const LIGHT = "#c2856e";
 const DARK = "#664539";
 const COLUMNS = 8;
 const ROWS = 8;
-const SQUARE_SIZE = 80;
 
 // TODO: refactor to use stitch library
 const Board = () => {
-    const { canvas } = useContext(GameCTX);
+    const { canvas, setBoard, SQUARE_SIZE } = useContext(GameCTX);
     const [board] = useState(() => {
         return new Array(ROWS).fill(null).map((_row, rowIndex) => {
             const colKeys = Array.from({ length: COLUMNS }, (_, index) => {
@@ -47,6 +46,7 @@ const Board = () => {
         if (!canvas || !board.length) return;
         // flatten multidimensional array and spread into canvas
         canvas.add(...board.map((row) => Object.values(row)).flat());
+        setBoard(board);
     }, [canvas, board]);
 };
 export default Board;

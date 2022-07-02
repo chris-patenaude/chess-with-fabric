@@ -29,7 +29,7 @@ const pieceTypes = Object.freeze({
     dark_pawn,
 });
 
-const Piece = ({ type, shade, size }) => {
+const Piece = ({ type, shade, size, left, top }) => {
     const { canvas } = useContext(GameCTX);
     const [piece, setPiece] = useState(null);
     const [preventCreate, setPreventCreate] = useState(false);
@@ -38,6 +38,8 @@ const Piece = ({ type, shade, size }) => {
         stitch
             .svg(pieceTypes[`${shade}_${type}`], {
                 squareSize: size,
+                left: left || 0,
+                top: top || 0,
             })
             .then((res) => setPiece(res));
     }, [shade, type, size, preventCreate]);

@@ -1,5 +1,4 @@
 // Inspiration from https://github.com/asotog/fabricjs-react/blob/master/src/index.tsx
-import { fabric } from "fabric";
 import { useContext, useEffect, useRef } from "react";
 import GameCTX from "./GameCTX";
 import stitch from "./lib/stitch";

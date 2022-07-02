@@ -4,18 +4,19 @@ const stitch = Object.freeze({
         return new fabric.Canvas(elem, opt);
     },
     async svg(url, opt = {}) {
-        const { squareSize = 50 } = opt;
+        const { squareSize } = opt;
         return new Promise((res) => {
             fabric.loadSVGFromURL(url, (objs, options) => {
                 const loadedObjects = fabric.util.groupSVGElements(objs, options);
                 const svgWidth = loadedObjects.width;
                 const svgHeight = loadedObjects.height;
                 if (!svgWidth || !svgHeight) throw UnrecognizedResolutionException;
-                const scaleRatio = squareSize / Math.max(svgHeight, svgWidth);
+                const longestSide = Math.max(options.width, options.height);
+                const scaleRatio = squareSize / longestSide;
                 loadedObjects.scale(scaleRatio);
                 loadedObjects.set({
-                    height: squareSize / scaleRatio,
-                    width: squareSize / scaleRatio,
+                    height: longestSide,
+                    width: longestSide,
                     ...opt,
                 });
                 res(loadedObjects);
@@ -23,7 +24,6 @@ const stitch = Object.freeze({
         });
     },
 });
-
 export default stitch;
 
 // ERRORS //
