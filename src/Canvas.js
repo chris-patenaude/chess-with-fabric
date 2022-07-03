@@ -31,7 +31,7 @@ const Canvas = (props) => {
         // TODO: Not sure what the third arg is doing here
         window.addEventListener("resize", setCanvasDimensions, false);
         canvas.on("mouse:up", (opt) => {
-            options.target.set({
+            opt.target.set({
                 left: Math.round(opt.target.left / SQUARE_SIZE) * SQUARE_SIZE,
                 top: Math.round(opt.target.top / SQUARE_SIZE) * SQUARE_SIZE,
             });
