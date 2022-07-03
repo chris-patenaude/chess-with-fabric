@@ -28,22 +28,40 @@ const Canvas = (props) => {
             canvas.renderAll();
         };
 
-        setCanvasDimensions();
         const initEventListeners = () => {
             window.addEventListener("resize", setCanvasDimensions, false);
+            // * Note: there may be a better way to center the
+            // * object on the pointer but I couldn't find it.
+            // really feels like there should be a build in method for this...
+            const centerPieceOnPointer = (piece, pointer) => {
+                piece.set({
+                    left: pointer.x - SQUARE_SIZE / 2,
+                    top: pointer.y - SQUARE_SIZE / 2,
+                });
+                piece.setCoords();
+            };
+            canvas.on("object:moving", (opt) => {
+                const pointer = canvas.getPointer(opt.e);
+                const activePiece = opt.target;
+                if (!activePiece) return;
+                centerPieceOnPointer(activePiece, pointer);
+            });
             canvas.on("mouse:down", (opt) => {
+                const pointer = canvas.getPointer(opt.e);
                 const activePiece = opt.target;
                 if (!activePiece) return;
                 activePiece.data.origin = {
                     left: activePiece.left,
                     top: activePiece.top,
                 };
+                centerPieceOnPointer(activePiece, pointer);
             });
             canvas.on("mouse:up", (opt) => {
                 const pointer = canvas.getPointer(opt.e);
                 const activePiece = opt.target;
                 if (!pointer || !activePiece) return;
 
+                // Note: setCoords() tells the bounding box to move as well.
                 const move = (override = null) => {
                     if (override) {
                         activePiece.set({
@@ -62,6 +80,11 @@ const Canvas = (props) => {
                     activePiece.setCoords();
                 };
 
+                const capture = (enemyPiece) => {
+                    move();
+                    canvas.remove(enemyPiece);
+                };
+
                 const otherPieces = canvas
                     .getObjects()
                     .filter(
@@ -75,12 +98,16 @@ const Canvas = (props) => {
 
                 // TODO: add check to see if legal position
                 if (!squareOccupance) return move();
+                if (squareOccupance.data.shade !== activePiece.data.shade) {
+                    return capture(squareOccupance);
+                }
+
+                // snap to original position
                 move({
                     top: activePiece.data.origin.top,
                     left: activePiece.data.origin.left,
                 });
 
-                // TODO: add check to see if enemy Piece
                 // TODO: add branch
                 // IF not legal move THEN return to origin
                 // IF not occupied THEN move to square
@@ -89,6 +116,7 @@ const Canvas = (props) => {
             });
         };
 
+        setCanvasDimensions();
         initEventListeners();
         setCanvas(canvas);
 
