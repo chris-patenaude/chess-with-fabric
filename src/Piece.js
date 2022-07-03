@@ -29,26 +29,32 @@ const pieceTypes = Object.freeze({
     dark_pawn,
 });
 
-const Piece = ({ type, shade, size, left, top }) => {
+export const OBJECT_TYPE = "PIECE";
+
+const Piece = ({ type, shade, size, left, top, id }) => {
     const { canvas } = useContext(GameCTX);
     const [piece, setPiece] = useState(null);
-    const [preventCreate, setPreventCreate] = useState(false);
     useEffect(() => {
-        if (preventCreate) return;
+        if (!canvas) return;
         stitch
             .svg(pieceTypes[`${shade}_${type}`], {
                 hasControls: false,
                 squareSize: size,
                 left: left || 0,
                 top: top || 0,
+                data: { type: OBJECT_TYPE },
+                id: id,
             })
             .then((res) => setPiece(res));
-    }, [shade, type, size, preventCreate]);
+    }, [shade, type, size, left, top, id, canvas]);
     useEffect(() => {
         if (!canvas || !piece) return;
         // flatten multidimensional array and spread into canvas
         canvas.add(piece);
-        setPreventCreate(true);
+        return () => {
+            // Cleanup piece on dismount
+            canvas.remove(piece);
+        };
     }, [canvas, piece]);
 };
 export default Piece;

@@ -8,15 +8,14 @@ export const GameState = Object.freeze({
 
 export default createContext({
     isMouseDown: false,
-    setIsMouseDown: () => console.warn("setIsMouseDown() is undefined"),
+    setIsMouseDown: undefined,
     gameState: GameState.IDLE,
-    setGameState: () => console.warn("setGameState() is undefined"),
+    setGameState: undefined,
     canvas: undefined,
-    // this is left to the react component to define
-    setCanvas: () => console.warn("setCanvas() is undefined"),
+    setCanvas: undefined,
     board: undefined,
-    setBoard: () => console.warn("setBoard() is undefined"),
+    setBoard: undefined,
     activePieces: undefined,
-    setActivePieces: () => console.warn("setActivePieces() is undefined"),
+    setActivePieces: undefined,
     SQUARE_SIZE: undefined,
 });
