@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.611f644d.js",
-    "static/js/787.dd1ec51d.chunk.js": "/static/js/787.dd1ec51d.chunk.js",
-    "static/media/dark_rook.svg": "/static/media/dark_rook.fdc575582c2cbe2ec82093702945226f.svg",
-    "static/media/dark_knight.svg": "/static/media/dark_knight.7930be9e07b51bc0e069b1d77e31261a.svg",
-    "static/media/dark_king.svg": "/static/media/dark_king.6c8cc8fabe5215cc854dec67ee7781fd.svg",
-    "static/media/dark_queen.svg": "/static/media/dark_queen.cf388bf415c0d33ec16f23593b8d0d91.svg",
-    "static/media/light_king.svg": "/static/media/light_king.3f959aab36df6290a8e0f17c7d242c19.svg",
-    "static/media/light_knight.svg": "/static/media/light_knight.d47944d2cee4f8c707d1907706c142fa.svg",
-    "static/media/light_bishop.svg": "/static/media/light_bishop.cf781aa194cfdc1a617acf2b1a262bb7.svg",
-    "static/media/dark_bishop.svg": "/static/media/dark_bishop.04932f63ef10dcdee115b649286230f5.svg",
-    "static/media/light_rook.svg": "/static/media/light_rook.9e48b84f189eea24339f8a679e7a664f.svg",
-    "static/media/light_queen.svg": "/static/media/light_queen.7a1aecff0f22ff68c43f9b7f8a81d0b4.svg",
-    "static/media/dark_pawn.svg": "/static/media/dark_pawn.be5d44ca5ee868885d216188996e3a00.svg",
-    "static/media/light_pawn.svg": "/static/media/light_pawn.50273cc6d86861932d0a01c38274009a.svg",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.611f644d.js.map": "/static/js/main.611f644d.js.map",
-    "787.dd1ec51d.chunk.js.map": "/static/js/787.dd1ec51d.chunk.js.map"
+    "main.css": "/chess-with-fabric/static/css/main.073c9b0a.css",
+    "main.js": "/chess-with-fabric/static/js/main.18e4e8b1.js",
+    "static/js/787.dd1ec51d.chunk.js": "/chess-with-fabric/static/js/787.dd1ec51d.chunk.js",
+    "static/media/dark_rook.svg": "/chess-with-fabric/static/media/dark_rook.fdc575582c2cbe2ec82093702945226f.svg",
+    "static/media/dark_knight.svg": "/chess-with-fabric/static/media/dark_knight.7930be9e07b51bc0e069b1d77e31261a.svg",
+    "static/media/dark_king.svg": "/chess-with-fabric/static/media/dark_king.6c8cc8fabe5215cc854dec67ee7781fd.svg",
+    "static/media/dark_queen.svg": "/chess-with-fabric/static/media/dark_queen.cf388bf415c0d33ec16f23593b8d0d91.svg",
+    "static/media/light_king.svg": "/chess-with-fabric/static/media/light_king.3f959aab36df6290a8e0f17c7d242c19.svg",
+    "static/media/light_knight.svg": "/chess-with-fabric/static/media/light_knight.d47944d2cee4f8c707d1907706c142fa.svg",
+    "static/media/light_bishop.svg": "/chess-with-fabric/static/media/light_bishop.cf781aa194cfdc1a617acf2b1a262bb7.svg",
+    "static/media/dark_bishop.svg": "/chess-with-fabric/static/media/dark_bishop.04932f63ef10dcdee115b649286230f5.svg",
+    "static/media/light_rook.svg": "/chess-with-fabric/static/media/light_rook.9e48b84f189eea24339f8a679e7a664f.svg",
+    "static/media/light_queen.svg": "/chess-with-fabric/static/media/light_queen.7a1aecff0f22ff68c43f9b7f8a81d0b4.svg",
+    "static/media/dark_pawn.svg": "/chess-with-fabric/static/media/dark_pawn.be5d44ca5ee868885d216188996e3a00.svg",
+    "static/media/light_pawn.svg": "/chess-with-fabric/static/media/light_pawn.50273cc6d86861932d0a01c38274009a.svg",
+    "index.html": "/chess-with-fabric/index.html",
+    "main.073c9b0a.css.map": "/chess-with-fabric/static/css/main.073c9b0a.css.map",
+    "main.18e4e8b1.js.map": "/chess-with-fabric/static/js/main.18e4e8b1.js.map",
+    "787.dd1ec51d.chunk.js.map": "/chess-with-fabric/static/js/787.dd1ec51d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.611f644d.js"
+    "static/js/main.18e4e8b1.js"
   ]
 }
