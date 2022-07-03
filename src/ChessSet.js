@@ -8,17 +8,17 @@ const ChessSet = () => {
     return (
         <>
             {/* TODO do something about the literals  */}
-            <Piece key={uuidv4()} type="rook" shade="dark" size={SQUARE_SIZE} left={0} top={0} />
-            <Piece key={uuidv4()} type="knight" shade="dark" size={SQUARE_SIZE} left={1 * SQUARE_SIZE} top={0} />
-            <Piece key={uuidv4()} type="bishop" shade="dark" size={SQUARE_SIZE} left={2 * SQUARE_SIZE} top={0} />
-            <Piece key={uuidv4()} type="queen" shade="dark" size={SQUARE_SIZE} left={3 * SQUARE_SIZE} top={0} />
-            <Piece key={uuidv4()} type="king" shade="dark" size={SQUARE_SIZE} left={4 * SQUARE_SIZE} top={0} />
-            <Piece key={uuidv4()} type="bishop" shade="dark" size={SQUARE_SIZE} left={5 * SQUARE_SIZE} top={0} />
-            <Piece key={uuidv4()} type="knight" shade="dark" size={SQUARE_SIZE} left={6 * SQUARE_SIZE} top={0} />
-            <Piece key={uuidv4()} type="rook" shade="dark" size={SQUARE_SIZE} left={7 * SQUARE_SIZE} top={0} />
+            <Piece type="rook" shade="dark" size={SQUARE_SIZE} left={0} top={0} />
+            <Piece type="knight" shade="dark" size={SQUARE_SIZE} left={1 * SQUARE_SIZE} top={0} />
+            <Piece type="bishop" shade="dark" size={SQUARE_SIZE} left={2 * SQUARE_SIZE} top={0} />
+            <Piece type="queen" shade="dark" size={SQUARE_SIZE} left={3 * SQUARE_SIZE} top={0} />
+            <Piece type="king" shade="dark" size={SQUARE_SIZE} left={4 * SQUARE_SIZE} top={0} />
+            <Piece type="bishop" shade="dark" size={SQUARE_SIZE} left={5 * SQUARE_SIZE} top={0} />
+            <Piece type="knight" shade="dark" size={SQUARE_SIZE} left={6 * SQUARE_SIZE} top={0} />
+            <Piece type="rook" shade="dark" size={SQUARE_SIZE} left={7 * SQUARE_SIZE} top={0} />
             {Array.from({ length: 8 }, (_, i) => (
                 <Piece
-                    key={uuidv4()}
+                    key={`dark_pawn_${i}`}
                     type="pawn"
                     shade="dark"
                     size={SQUARE_SIZE}
@@ -27,66 +27,17 @@ const ChessSet = () => {
                 />
             ))}
 
-            <Piece key={uuidv4()} type="rook" shade="light" size={SQUARE_SIZE} left={0} top={7 * SQUARE_SIZE} />
-            <Piece
-                key={uuidv4()}
-                type="knight"
-                shade="light"
-                size={SQUARE_SIZE}
-                left={1 * SQUARE_SIZE}
-                top={7 * SQUARE_SIZE}
-            />
-            <Piece
-                key={uuidv4()}
-                type="bishop"
-                shade="light"
-                size={SQUARE_SIZE}
-                left={2 * SQUARE_SIZE}
-                top={7 * SQUARE_SIZE}
-            />
-            <Piece
-                key={uuidv4()}
-                type="queen"
-                shade="light"
-                size={SQUARE_SIZE}
-                left={3 * SQUARE_SIZE}
-                top={7 * SQUARE_SIZE}
-            />
-            <Piece
-                key={uuidv4()}
-                type="king"
-                shade="light"
-                size={SQUARE_SIZE}
-                left={4 * SQUARE_SIZE}
-                top={7 * SQUARE_SIZE}
-            />
-            <Piece
-                key={uuidv4()}
-                type="bishop"
-                shade="light"
-                size={SQUARE_SIZE}
-                left={5 * SQUARE_SIZE}
-                top={7 * SQUARE_SIZE}
-            />
-            <Piece
-                key={uuidv4()}
-                type="knight"
-                shade="light"
-                size={SQUARE_SIZE}
-                left={6 * SQUARE_SIZE}
-                top={7 * SQUARE_SIZE}
-            />
-            <Piece
-                key={uuidv4()}
-                type="rook"
-                shade="light"
-                size={SQUARE_SIZE}
-                left={7 * SQUARE_SIZE}
-                top={7 * SQUARE_SIZE}
-            />
+            <Piece type="rook" shade="light" size={SQUARE_SIZE} left={0} top={7 * SQUARE_SIZE} />
+            <Piece type="knight" shade="light" size={SQUARE_SIZE} left={1 * SQUARE_SIZE} top={7 * SQUARE_SIZE} />
+            <Piece type="bishop" shade="light" size={SQUARE_SIZE} left={2 * SQUARE_SIZE} top={7 * SQUARE_SIZE} />
+            <Piece type="queen" shade="light" size={SQUARE_SIZE} left={3 * SQUARE_SIZE} top={7 * SQUARE_SIZE} />
+            <Piece type="king" shade="light" size={SQUARE_SIZE} left={4 * SQUARE_SIZE} top={7 * SQUARE_SIZE} />
+            <Piece type="bishop" shade="light" size={SQUARE_SIZE} left={5 * SQUARE_SIZE} top={7 * SQUARE_SIZE} />
+            <Piece type="knight" shade="light" size={SQUARE_SIZE} left={6 * SQUARE_SIZE} top={7 * SQUARE_SIZE} />
+            <Piece type="rook" shade="light" size={SQUARE_SIZE} left={7 * SQUARE_SIZE} top={7 * SQUARE_SIZE} />
             {Array.from({ length: 8 }, (_, i) => (
                 <Piece
-                    key={uuidv4()}
+                    key={`light_pawn_${i}`}
                     type="pawn"
                     shade="light"
                     size={SQUARE_SIZE}
