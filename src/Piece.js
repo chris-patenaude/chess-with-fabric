@@ -42,8 +42,11 @@ const Piece = ({ type, shade, size, left, top, id }) => {
                 squareSize: size,
                 left: left || 0,
                 top: top || 0,
-                data: { type: OBJECT_TYPE },
-                id: id,
+                data: {
+                    type: OBJECT_TYPE,
+                    shade,
+                    id,
+                },
             })
             .then((res) => setPiece(res));
     }, [shade, type, size, left, top, id, canvas]);

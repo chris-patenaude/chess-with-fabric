@@ -2,6 +2,7 @@
 import { useContext, useEffect, useRef } from "react";
 import GameCTX from "./GameCTX";
 import stitch from "./lib/stitch";
+import { OBJECT_TYPE as PIECE } from "./Piece";
 
 // uncontrolled component implementation
 const Canvas = (props) => {
@@ -30,23 +31,61 @@ const Canvas = (props) => {
         setCanvasDimensions();
         const initEventListeners = () => {
             window.addEventListener("resize", setCanvasDimensions, false);
+            canvas.on("mouse:down", (opt) => {
+                const activePiece = opt.target;
+                if (!activePiece) return;
+                activePiece.data.origin = {
+                    left: activePiece.left,
+                    top: activePiece.top,
+                };
+            });
             canvas.on("mouse:up", (opt) => {
                 const pointer = canvas.getPointer(opt.e);
                 const activePiece = opt.target;
                 if (!pointer || !activePiece) return;
-                // TODO: add check to see if square is occupied
-                // TODO: add check to see if enemy Piece
+
+                const move = (override = null) => {
+                    if (override) {
+                        activePiece.set({
+                            left: override.left || 0,
+                            top: override.top || 0,
+                        });
+                        activePiece.setCoords();
+                        return;
+                    }
+                    const left =
+                        Math.round(activePiece.left / SQUARE_SIZE) *
+                        SQUARE_SIZE;
+                    const top =
+                        Math.round(activePiece.top / SQUARE_SIZE) * SQUARE_SIZE;
+                    activePiece.set({ left, top });
+                    activePiece.setCoords();
+                };
+
+                const otherPieces = canvas
+                    .getObjects()
+                    .filter(
+                        (obj) => obj.data.type === PIECE && obj !== activePiece
+                    );
+
+                const squareOccupance = canvas._searchPossibleTargets(
+                    otherPieces,
+                    pointer
+                );
+
                 // TODO: add check to see if legal position
+                if (!squareOccupance) return move();
+                move({
+                    top: activePiece.data.origin.top,
+                    left: activePiece.data.origin.left,
+                });
+
+                // TODO: add check to see if enemy Piece
                 // TODO: add branch
                 // IF not legal move THEN return to origin
                 // IF not occupied THEN move to square
                 // IF is enemy THEN capture piece
                 // return to origin
-                const left =
-                    Math.round(activePiece.left / SQUARE_SIZE) * SQUARE_SIZE;
-                const top =
-                    Math.round(activePiece.top / SQUARE_SIZE) * SQUARE_SIZE;
-                activePiece.set({ left, top });
             });
         };
 
