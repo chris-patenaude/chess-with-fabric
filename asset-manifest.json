@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/chess-with-fabric/static/css/main.073c9b0a.css",
-    "main.js": "/chess-with-fabric/static/js/main.18e4e8b1.js",
+    "main.js": "/chess-with-fabric/static/js/main.a2c30c61.js",
     "static/js/787.dd1ec51d.chunk.js": "/chess-with-fabric/static/js/787.dd1ec51d.chunk.js",
     "static/media/dark_rook.svg": "/chess-with-fabric/static/media/dark_rook.fdc575582c2cbe2ec82093702945226f.svg",
     "static/media/dark_knight.svg": "/chess-with-fabric/static/media/dark_knight.7930be9e07b51bc0e069b1d77e31261a.svg",
@@ -17,11 +17,11 @@
     "static/media/light_pawn.svg": "/chess-with-fabric/static/media/light_pawn.50273cc6d86861932d0a01c38274009a.svg",
     "index.html": "/chess-with-fabric/index.html",
     "main.073c9b0a.css.map": "/chess-with-fabric/static/css/main.073c9b0a.css.map",
-    "main.18e4e8b1.js.map": "/chess-with-fabric/static/js/main.18e4e8b1.js.map",
+    "main.a2c30c61.js.map": "/chess-with-fabric/static/js/main.a2c30c61.js.map",
     "787.dd1ec51d.chunk.js.map": "/chess-with-fabric/static/js/787.dd1ec51d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.18e4e8b1.js"
+    "static/js/main.a2c30c61.js"
   ]
 }
