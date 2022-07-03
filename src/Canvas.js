@@ -49,7 +49,7 @@ const Canvas = (props) => {
             canvas.on("mouse:down", (opt) => {
                 const pointer = canvas.getPointer(opt.e);
                 const activePiece = opt.target;
-                if (!activePiece) return;
+                if (activePiece.data.type !== PIECE) return;
                 activePiece.data.origin = {
                     left: activePiece.left,
                     top: activePiece.top,
