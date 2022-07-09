@@ -2,167 +2,29 @@ import { useContext } from "react";
 import GameCTX from "./GameCTX";
 import Piece from "./Piece";
 import { v4 as uuidv4 } from "uuid";
+import chessSet from "./chessSet.json";
 
 const ChessSet = () => {
-    const { SQUARE_SIZE } = useContext(GameCTX);
+    const { SQUARE_SIZE, board, getSquare } = useContext(GameCTX);
     return (
         <>
-            {
-                <>
-                    <Piece
-                        type="rook"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={0}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="knight"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={1 * SQUARE_SIZE}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="bishop"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={2 * SQUARE_SIZE}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="queen"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={3 * SQUARE_SIZE}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="king"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={4 * SQUARE_SIZE}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="bishop"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={5 * SQUARE_SIZE}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="knight"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={6 * SQUARE_SIZE}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="rook"
-                        shade="dark"
-                        size={SQUARE_SIZE}
-                        left={7 * SQUARE_SIZE}
-                        top={0}
-                        id={uuidv4()}
-                    />
-                    {Array.from({ length: 8 }, (_, i) => (
+            {Array.isArray(chessSet) &&
+                !!board &&
+                chessSet.map(({ type, shade, position }) => {
+                    let { top, left } = getSquare(...position);
+                    let id = `${shade}-${type}-${uuidv4()}`;
+                    return (
                         <Piece
-                            key={`dark_pawn_${i}`}
-                            type="pawn"
-                            shade="dark"
+                            key={id}
+                            type={type}
+                            shade={shade}
                             size={SQUARE_SIZE}
-                            left={i * SQUARE_SIZE}
-                            top={SQUARE_SIZE}
-                            id={uuidv4()}
+                            left={left}
+                            top={top}
+                            id={id}
                         />
-                    ))}
-
-                    <Piece
-                        type="rook"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={0}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="knight"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={1 * SQUARE_SIZE}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="bishop"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={2 * SQUARE_SIZE}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="queen"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={3 * SQUARE_SIZE}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="king"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={4 * SQUARE_SIZE}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="bishop"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={5 * SQUARE_SIZE}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="knight"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={6 * SQUARE_SIZE}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    <Piece
-                        type="rook"
-                        shade="light"
-                        size={SQUARE_SIZE}
-                        left={7 * SQUARE_SIZE}
-                        top={7 * SQUARE_SIZE}
-                        id={uuidv4()}
-                    />
-                    {Array.from({ length: 8 }, (_, i) => (
-                        <Piece
-                            key={`light_pawn_${i}`}
-                            type="pawn"
-                            shade="light"
-                            size={SQUARE_SIZE}
-                            left={i * SQUARE_SIZE}
-                            top={6 * SQUARE_SIZE}
-                            id={uuidv4()}
-                        />
-                    ))}
-                </>
-            }
-            {/* TODO do something about the literals  */}
+                    );
+                })}
         </>
     );
 };

@@ -33,6 +33,7 @@ const Canvas = (props) => {
             // * Note: there may be a better way to center the
             // * object on the pointer but I couldn't find it.
             // really feels like there should be a build in method for this...
+
             const centerPieceOnPointer = (piece, pointer) => {
                 piece.set({
                     left: pointer.x - SQUARE_SIZE / 2,
@@ -40,12 +41,14 @@ const Canvas = (props) => {
                 });
                 piece.setCoords();
             };
+
             canvas.on("object:moving", (opt) => {
                 const pointer = canvas.getPointer(opt.e);
                 const activePiece = opt.target;
                 if (!activePiece) return;
                 centerPieceOnPointer(activePiece, pointer);
             });
+
             canvas.on("mouse:down", (opt) => {
                 const pointer = canvas.getPointer(opt.e);
                 const activePiece = opt.target;
@@ -56,6 +59,7 @@ const Canvas = (props) => {
                 };
                 centerPieceOnPointer(activePiece, pointer);
             });
+
             canvas.on("mouse:up", (opt) => {
                 const pointer = canvas.getPointer(opt.e);
                 const activePiece = opt.target;

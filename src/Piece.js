@@ -32,7 +32,7 @@ const pieceTypes = Object.freeze({
 export const OBJECT_TYPE = "PIECE";
 
 const Piece = ({ type, shade, size, left, top, id }) => {
-    const { canvas } = useContext(GameCTX);
+    const { canvas, VERBOSE } = useContext(GameCTX);
     const [piece, setPiece] = useState(null);
     useEffect(() => {
         if (!canvas) return;
@@ -50,14 +50,17 @@ const Piece = ({ type, shade, size, left, top, id }) => {
             })
             .then((res) => setPiece(res));
     }, [shade, type, size, left, top, id, canvas]);
+
     useEffect(() => {
         if (!canvas || !piece) return;
         // flatten multidimensional array and spread into canvas
         canvas.add(piece);
+        VERBOSE && console.log(`CREATED:PIECE - ${id}`);
         return () => {
             // Cleanup piece on dismount
+            VERBOSE && console.log(`REMOVED:PIECE - ${id}`);
             canvas.remove(piece);
         };
-    }, [canvas, piece]);
+    }, [canvas, piece, id, VERBOSE]);
 };
 export default Piece;

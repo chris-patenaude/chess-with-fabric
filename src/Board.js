@@ -13,30 +13,27 @@ const Board = () => {
     const { canvas, setBoard, SQUARE_SIZE } = useContext(GameCTX);
     const [board] = useState(() => {
         return new Array(ROWS).fill(null).map((_row, rowIndex) => {
-            const colKeys = Array.from({ length: COLUMNS }, (_, index) => {
-                return String.fromCharCode(index + 97);
-            });
-            return colKeys.reduce((acc, key, colIndex) => {
-                const getColor = () => {
-                    const rowIsEven = rowIndex % 2 === 0;
-                    const columnIsEven = colIndex % 2 === 0;
-                    if (
-                        (rowIsEven && columnIsEven) ||
-                        (!rowIsEven && !columnIsEven)
-                    ) {
-                        return LIGHT;
-                    }
-                    if (
-                        (rowIsEven && !columnIsEven) ||
-                        (!rowIsEven && columnIsEven)
-                    ) {
-                        return DARK;
-                    }
-                };
+            return Array(COLUMNS)
+                .fill(null)
+                .map((_col, colIndex) => {
+                    const getColor = () => {
+                        const rowIsEven = rowIndex % 2 === 0;
+                        const columnIsEven = colIndex % 2 === 0;
+                        if (
+                            (rowIsEven && columnIsEven) ||
+                            (!rowIsEven && !columnIsEven)
+                        ) {
+                            return LIGHT;
+                        }
+                        if (
+                            (rowIsEven && !columnIsEven) ||
+                            (!rowIsEven && columnIsEven)
+                        ) {
+                            return DARK;
+                        }
+                    };
 
-                return {
-                    ...acc,
-                    [key]: new fabric.Rect({
+                    return new fabric.Rect({
                         strokeWidth: 0,
                         width: SQUARE_SIZE,
                         height: SQUARE_SIZE,
@@ -45,9 +42,8 @@ const Board = () => {
                         fill: getColor(),
                         selectable: false,
                         data: { type: OBJECT_TYPE },
-                    }),
-                };
-            }, {});
+                    });
+                });
         });
     });
 

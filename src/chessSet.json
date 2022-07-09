@@ -1,0 +1,162 @@
+[
+    {
+        "type": "rook",
+        "shade": "light",
+        "position": ["a", 1]
+    },
+    {
+        "type": "knight",
+        "shade": "light",
+        "position": ["b", 1]
+    },
+    {
+        "type": "bishop",
+        "shade": "light",
+        "position": ["c", 1]
+    },
+    {
+        "type": "queen",
+        "shade": "light",
+        "position": ["d", 1]
+    },
+    {
+        "type": "king",
+        "shade": "light",
+        "position": ["e", 1]
+    },
+    {
+        "type": "bishop",
+        "shade": "light",
+        "position": ["f", 1]
+    },
+    {
+        "type": "knight",
+        "shade": "light",
+        "position": ["g", 1]
+    },
+    {
+        "type": "rook",
+        "shade": "light",
+        "position": ["h", 1]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["a", 2]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["b", 2]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["c", 2]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["d", 2]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["e", 2]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["f", 2]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["g", 2]
+    },
+    {
+        "type": "pawn",
+        "shade": "light",
+        "position": ["h", 2]
+    },
+    {
+        "type": "rook",
+        "shade": "dark",
+        "position": ["a", 8]
+    },
+    {
+        "type": "knight",
+        "shade": "dark",
+        "position": ["b", 8]
+    },
+    {
+        "type": "bishop",
+        "shade": "dark",
+        "position": ["c", 8]
+    },
+    {
+        "type": "queen",
+        "shade": "dark",
+        "position": ["d", 8]
+    },
+    {
+        "type": "king",
+        "shade": "dark",
+        "position": ["e", 8]
+    },
+    {
+        "type": "bishop",
+        "shade": "dark",
+        "position": ["f", 8]
+    },
+    {
+        "type": "knight",
+        "shade": "dark",
+        "position": ["g", 8]
+    },
+    {
+        "type": "rook",
+        "shade": "dark",
+        "position": ["h", 8]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["a", 7]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["b", 7]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["c", 7]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["d", 7]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["e", 7]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["f", 7]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["g", 7]
+    },
+    {
+        "type": "pawn",
+        "shade": "dark",
+        "position": ["h", 7]
+    }
+]

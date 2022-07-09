@@ -5,13 +5,36 @@ import GameCTX, { GameState } from "./GameCTX";
 import Board from "./Board";
 import ChessSet from "./ChessSet";
 
+const { SQUARE_SIZE, VERBOSE } = settings;
+const CHAR_BASE = "a".charCodeAt();
+const DIMENSION = 8;
+
 const Game = () => {
     const [canvas, setCanvas] = useState(undefined);
     const [gameState, setGameState] = useState(GameState.IDLE);
     const [isMouseDown, setIsMouseDown] = useState(false);
     const [activePieces, setActivePieces] = useState(undefined);
     const [board, setBoard] = useState(undefined);
-    const [SQUARE_SIZE] = useState(settings.SQUARE_SIZE);
+
+    const getSquare = (col, row) => {
+        if (typeof col !== "string" || col.length !== 1) {
+            throw InvalidParameterList;
+        }
+        if (isNaN(row)) throw InvalidParameterList;
+        let colIndex = col.toLowerCase().charCodeAt() - CHAR_BASE;
+        let rowIndex = DIMENSION - row;
+        // console.log({ colIndex, rowIndex, col, row });
+        let square = board[rowIndex]?.[colIndex];
+        if (!square) throw OutOfBounds;
+        return square;
+    };
+
+    const InvalidParameterList = new Error(
+        "Parameters do not match expected values"
+    );
+    const OutOfBounds = new Error(
+        "Square does not exist at designated location."
+    );
 
     return (
         <GameCTX.Provider
@@ -27,9 +50,16 @@ const Game = () => {
                 activePieces,
                 setActivePieces,
                 SQUARE_SIZE,
+                getSquare,
+                VERBOSE,
             }}
         >
-            <Canvas style={{ height: SQUARE_SIZE * 8, width: SQUARE_SIZE * 8 }}>
+            <Canvas
+                style={{
+                    height: SQUARE_SIZE * DIMENSION,
+                    width: SQUARE_SIZE * DIMENSION,
+                }}
+            >
                 <Board />
                 <ChessSet />
             </Canvas>

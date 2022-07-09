@@ -1,3 +1,4 @@
 {
-    "SQUARE_SIZE": 80
+    "SQUARE_SIZE": 80,
+    "VERBOSE": true
 }

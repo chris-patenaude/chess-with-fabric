@@ -7,9 +7,11 @@ export const GameState = Object.freeze({
 });
 
 export default createContext({
-    isMouseDown: false,
-    setIsMouseDown: undefined,
     gameState: GameState.IDLE,
+    isMouseDown: false,
+    VERBOSE: false,
+    SQUARE_SIZE: undefined,
+    setIsMouseDown: undefined,
     setGameState: undefined,
     canvas: undefined,
     setCanvas: undefined,
@@ -17,5 +19,5 @@ export default createContext({
     setBoard: undefined,
     activePieces: undefined,
     setActivePieces: undefined,
-    SQUARE_SIZE: undefined,
+    getSquare: undefined,
 });
