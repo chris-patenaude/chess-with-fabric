@@ -11,41 +11,39 @@ export const OBJECT_TYPE = "SQUARE";
 // TODO: refactor to use stitch library
 const Board = () => {
     const { canvas, setBoard, SQUARE_SIZE } = useContext(GameCTX);
-    const [board] = useState(() => {
-        return new Array(ROWS).fill(null).map((_row, rowIndex) => {
-            return Array(COLUMNS)
-                .fill(null)
-                .map((_col, colIndex) => {
-                    const getColor = () => {
-                        const rowIsEven = rowIndex % 2 === 0;
-                        const columnIsEven = colIndex % 2 === 0;
-                        if (
-                            (rowIsEven && columnIsEven) ||
-                            (!rowIsEven && !columnIsEven)
-                        ) {
-                            return LIGHT;
-                        }
-                        if (
-                            (rowIsEven && !columnIsEven) ||
-                            (!rowIsEven && columnIsEven)
-                        ) {
-                            return DARK;
-                        }
-                    };
+    const [board] = useState(() =>
+        new Array(ROWS).fill(null).map((_row, rowIndex) =>
+            new Array(COLUMNS).fill(null).map((_col, colIndex) => {
+                const getColor = () => {
+                    const rowIsEven = rowIndex % 2 === 0;
+                    const columnIsEven = colIndex % 2 === 0;
+                    if (
+                        (rowIsEven && columnIsEven) ||
+                        (!rowIsEven && !columnIsEven)
+                    ) {
+                        return LIGHT;
+                    }
+                    if (
+                        (rowIsEven && !columnIsEven) ||
+                        (!rowIsEven && columnIsEven)
+                    ) {
+                        return DARK;
+                    }
+                };
 
-                    return new fabric.Rect({
-                        strokeWidth: 0,
-                        width: SQUARE_SIZE,
-                        height: SQUARE_SIZE,
-                        left: colIndex * SQUARE_SIZE,
-                        top: rowIndex * SQUARE_SIZE,
-                        fill: getColor(),
-                        selectable: false,
-                        data: { type: OBJECT_TYPE },
-                    });
+                return new fabric.Rect({
+                    strokeWidth: 0,
+                    width: SQUARE_SIZE,
+                    height: SQUARE_SIZE,
+                    left: colIndex * SQUARE_SIZE,
+                    top: rowIndex * SQUARE_SIZE,
+                    fill: getColor(),
+                    selectable: false,
+                    data: { type: OBJECT_TYPE },
                 });
-        });
-    });
+            })
+        )
+    );
 
     useEffect(() => {
         if (!canvas || !board.length || !setBoard) return;
